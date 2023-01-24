@@ -33,7 +33,7 @@ The following datasets will be used for this project:
 - Weight data loss dataset from https://www.kaggle.com/datasets/tombenny/foodhabbits
 
 #### Methodology
-The following Machine Learing models will be used:
+The following Machine Learning models will be used:
 - Linear regression is a statistical method that can be used to understand the relationship between variables that contribute to weight loss, the variables would be exercise and weight loss
 - Decision tree is another model that will be used to predict weight loss. It does this by creating a series of if-then statements that are based on the data. For example, if someone eats less or exercises more, then they are more likely to lose weight
 - Compare results of Classifiers like K Nearest Neighbors (KNN), Logistic Regression, Support Vector  Machines (SVC) on the dataset to determine the model with greatest accuracy
