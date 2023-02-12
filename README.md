@@ -40,13 +40,65 @@ The following Machine Learning models will be used:
 
 
 #### Results
-What did your research find?
+
+This project uses the ML skills acquired during this course to build ML models predicting Calories burnt or weight loss using data from exercise by Fitbit users and Dietary information provided by users.
+
+As described above in Data-Sources, I examine a couple of datasources. The [foodDiet.csv](https://github.com/yemifalokun/predicting-weight-loss/blob/main/data/foodDiet.csv) which includes 78 records with 7 features was used to build a Linear Regression ML model in the [predicting-weight-loss-using-diet-data-Linear-Regression.ipynb](https://github.com/yemifalokun/predicting-weight-loss/blob/main/notebooks/predicting-weight-loss-using-diet-data-Linear-Regression.ipynb)
+
+The training model accuracy from this modeling is 0.492845 which means that the model correctly classified 49.28% of the instances. For Testing model, the accuracy score of -0.774792 and a  Mean Absolute Error of 0.202576  which means that the model was able to correctly classify only 22.52% of the data.
+
+| Metric       	| Values                   | 
+|-------------------	|:---------------------------	|
+| Training 𝑅2 Score     | 0.492845                      |  
+| Training RMSE         | 0.206424                        |  
+| Training MAE          | 0.148942                        |  
+| Testing 𝑅2 Score      | -0.774793                         |  
+| Testing RMSE          | 	0.266211                        |  
+| Testing MAE           | 0.202576                         |  
+|                       |                               |  
+
+This may be due to the number of records and features of the dataset. Based on these results, the models listed in the [Methodology](#methodology) section will use the [dailyActivity_merged.csv](https://github.com/yemifalokun/predicting-weight-loss/blob/main/data/dailyActivity_merged.csv) dataset.
+
+Results from the models are described below:
+
+##### Notebook 1 
+
+
+
+##### Notebook 2
+
+
+
+
+##### Notebook 3
+
+
+| Model Name        	| Train Time (s)                      | Train Accuracy                | Test Accuracy 	                | 
+|-------------------	|:---------------------------	|:---------------------:	|:----------------------:	|
+| Logistic Regression   | 0.322                         | 0.8872047448926502        | 0.8875940762320952                 |  
+| KNN                   | 55.8                          | 0.8846033783080711        | 0.8807963097839281                  |  
+| Decision Tree	        | 0.376                         | 0.8911935069890049        | 0.884761673545359                 |  
+| SVM                   | 24.4                          | 0.8873087995560335        | 0.8875131504410455                 |  
+|                       |                               |                           |                        	| 
+
+Using Grid Search to create models with the different parameters and evaluate the performance metrics
+
+| Model Name        	| Train Time (s)                      | Best Parameters                                          | Best Score 	                | 
+|-------------------	|:---------------------------	|:-------------------------------------------------:	         |:----------------------:	|
+| Logistic Regression   | 64                            | C:0.001, penalty:l2, solver: liblinear	                     | 0.8872394393842521                |  
+| KNN                   | 302                           | n_neighbors: 17                                                | 0.8855397848500199                 |  
+| Decision Tree         | 15.7                          | criterion: entropy, max_depth: 1, model__min_samples_leaf: 1   | 0.8872394393842521                  |  
+| Logistic Regression   | 490                           | C: 0.1, kernel: rbf                                            | 0.8872394393842521                 |  
+|                       |                               |                                                                |                        	| 
+
+
 
 #### Outline of project
+- [predicting-weight-loss-notebook1-linear-regression](https://github.com/yemifalokun/predicting-weight-loss/blob/main/notebooks/predicting-weight-loss-notebook1-linear-regression.ipynb)
 
-- [Link to notebook 1]() - Comming Soon
-- [Link to notebook 2]() - Comming Soon
-- [Link to notebook 3]() - Comming Soon
+- [predicting-weight-loss-notebook2-decision-tree](https://github.com/yemifalokun/predicting-weight-loss/blob/main/notebooks/predicting-weight-loss-notebook2-decision-tree.ipynb)
+
+- [predicting-weight-loss-notebook3-comparing-classifiers](https://github.com/yemifalokun/predicting-weight-loss/blob/main/notebooks/predicting-weight-loss-notebook3-comparing-classifiers.ipynb)
 
 
 ##### Contact and Further Information
