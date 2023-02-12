@@ -43,7 +43,7 @@ The following Machine Learning models will be used:
 
 This project uses the ML skills acquired during this course to build ML models predicting Calories burnt or weight loss using data from exercise by Fitbit users and Dietary information provided by users.
 
-As described above in Data-Sources, I examine a couple of datasources. The [foodDiet.csv](https://github.com/yemifalokun/predicting-weight-loss/blob/main/data/foodDiet.csv) which includes 78 records with 7 features was used to build a Linear Regression ML model in the [predicting-weight-loss-using-diet-data-Linear-Regression.ipynb](https://github.com/yemifalokun/predicting-weight-loss/blob/main/notebooks/predicting-weight-loss-using-diet-data-Linear-Regression.ipynb)
+As described above in [Data Sources](#data-sources), I examine a couple of datasources. The [foodDiet.csv](https://github.com/yemifalokun/predicting-weight-loss/blob/main/data/foodDiet.csv) which includes 78 records with 7 features was used to build a Linear Regression ML model in the [predicting-weight-loss-using-diet-data-Linear-Regression.ipynb](https://github.com/yemifalokun/predicting-weight-loss/blob/main/notebooks/predicting-weight-loss-using-diet-data-Linear-Regression.ipynb)
 
 The training model accuracy from this modeling is 0.492845 which means that the model correctly classified 49.28% of the instances. For Testing model, the accuracy score of -0.774792 and a  Mean Absolute Error of 0.202576  which means that the model was able to correctly classify only 22.52% of the data.
 
@@ -99,6 +99,5 @@ Using Grid Search to create models with the different parameters and evaluate th
 - [predicting-weight-loss-notebook2-decision-tree](https://github.com/yemifalokun/predicting-weight-loss/blob/main/notebooks/predicting-weight-loss-notebook2-decision-tree.ipynb)
 
 - [predicting-weight-loss-notebook3-comparing-classifiers](https://github.com/yemifalokun/predicting-weight-loss/blob/main/notebooks/predicting-weight-loss-notebook3-comparing-classifiers.ipynb)
-
 
 ##### Contact and Further Information
