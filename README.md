@@ -61,43 +61,114 @@ This may be due to the number of records and features of the dataset. Based on t
 
 Results from the models are described below:
 
-##### Notebook 1 
+<ins>Notebook 1</ins>
+
+This notebook creates a ML Application using Linear Regression to understand the relationship between the features in this dataset where `Calories` is the dependent feature. Training and Test data sets were created using a 70/30 split
+
+Two models (ML Applications) were created:
+- `Model` - created using features - TotalSteps,TotalDistance,TrackerDistance,VeryActiveMinutes,FairlyActiveMinutes,LightlyActiveMinutes,SedentaryMinutes and Calories as the dependent feature/outcome variable
+- `Model1` - created using features TotalSteps and TotalDistance and Calories as the dependent feature/outcome variable
+
+The results from the two models are as follows:
+
+| Model Name/Metrics  | Training R2 Score | Train Accuracy | Training RMSE |  Training MAE	 | Testing R2 Score | Testing Accuracy | Testing RMSE |  Testing MAE	 | 
+|-------------------|:-----------------	|:------------:	|:--------------:	| :--------------:	| :--------------:	| :--------------:	| :--------------:	| :--------------:	| 
+| Model              | 0.623067           | 0.623067 | 446.263378       |  360.828569      | 0.540718       | 0.540718       | 432.217685      | 354.726341     | 
+| Model1             | 0.485793           | 0.485793  | 521.228244      |  406.471450       | 0.410035       | 0.410035       | 489.864699       | 	384.462094      | 
+|                  |                   |                 |                  	|               |               |                   |               |                   |
 
 
+For each model applications (model and model1), we ran some tests using sample Fitbit user profiles with the following results:
 
-##### Notebook 2
+| Model Name  	| Test Description                                                                     	| Predicted Used Car Price ($) 	|
+|-------------	|:--------------------------------------------------------------------------------------	|:----------------------------:	|
+| Model       	| Fitbit user walking 10k steps should record Calories burnt 	| 928.45237048                  	|
+| Model       	| Fitbit user walking 15k steps should record Calories burnt       	| 1976.52850815                    	|
+| Model      	| FitBit User walking 30k steps should record Calories burnt                                                               	| 1204.29072521                    	|
+| Model1      	| Fitbit user walking 10k steps should record Calories burnt                                                        	| 1694.96658981                   	|
+| Model1      	| Fitbit user walking 15k steps should record Calories burnt                                                          	| 2545.05292117                   	|
+| Model1      	| Fitbit user walking 30k steps should record Calories burnt                                                           	| 1478.1901517                  	
+|             	|                                                                                      	|                              	|
+
+Predicted results from this model does not look realistic for the 30k test, you would expect that the more steps and distance that you walk should result in higher calories, but the inverse is the case looking at the test results above. The 30k prediction may be due to the dataset used to train the model as there was a limited amount of datasets where the number of steps taken was over 25,000.
 
 
+<ins>Notebook 2</ins>
 
+This notebook created some ML applications using the Decision Tree Classifier. For these models, the daily calories records by the user was used to create a `weightloss` feature which was set to `1 = Yes` or `0 = No`.
+- Yes: if the previous calorie recorded was more than the next day
+- No: if the previous calorie recorded was less than the next day
 
-##### Notebook 3
+![Sample Dataframe of Decision Tree Classifier Dataset!](./images/Sample-Dataframe-DCT.jpeg)
 
+Using this dataset, setting the max_depth = 5 and using a Standard Scaler, the model provided the following results:
 
-| Model Name        	| Train Time (s)                      | Train Accuracy                | Test Accuracy 	                | 
-|-------------------	|:---------------------------	|:---------------------:	|:----------------------:	|
-| Logistic Regression   | 0.322                         | 0.8872047448926502        | 0.8875940762320952                 |  
-| KNN                   | 55.8                          | 0.8846033783080711        | 0.8807963097839281                  |  
-| Decision Tree	        | 0.376                         | 0.8911935069890049        | 0.884761673545359                 |  
-| SVM                   | 24.4                          | 0.8873087995560335        | 0.8875131504410455                 |  
-|                       |                               |                           |                        	| 
+- Training Accuracy Score 0.694859
+- Test Accuracy Score 0.606178
+- Precision: 0.614681
+- Recall: 0.614058
+- F1-score: 0.606125
+
+The confusion matrix that defines the performance of the classification algorithm is depicted below.
+
+![Confusion Matrix Decision Tree Classifier Dataset!](./images/Decision-Tree-Classifier-Confusion-Matrix.jpeg)
+
+With the depth set to 5 and out of those 259 fitbit users, the model classifier predicted 116 times when the user will lose calories and No in 143 times. In reality, 146 fitbit users burnt calories and 113 fitbit users did not.
+
+Treeplot of the Decision Tree Classifier with Max Depth set to 3
+
+![Tree Plot Decision Tree Classifier Dataset!](./images/Notebook2-Decision_Tree_Plot_Diagram.jpeg)
 
 Using Grid Search to create models with the different parameters and evaluate the performance metrics
 
 | Model Name        	| Train Time (s)                      | Best Parameters                                          | Best Score 	                | 
 |-------------------	|:---------------------------	|:-------------------------------------------------:	         |:----------------------:	|
-| Logistic Regression   | 64                            | C:0.001, penalty:l2, solver: liblinear	                     | 0.8872394393842521                |  
-| KNN                   | 302                           | n_neighbors: 17                                                | 0.8855397848500199                 |  
-| Decision Tree         | 15.7                          | criterion: entropy, max_depth: 1, model__min_samples_leaf: 1   | 0.8872394393842521                  |  
-| Logistic Regression   | 490                           | C: 0.1, kernel: rbf                                            | 0.8872394393842521                 |  
+| Decision Tree Classifier - Model 1   | 1.340982	    | {'model__criterion': 'gini', 'model__max_depth': 1, 'model__min_samples_leaf': 1}                     | 0.593852             |  
+| Decision Tree Classifier - Model 2   | 4.991964       | {'model__ccp_alpha': 0.01, 'model__criterion': 'entropy', 'model__max_depth': 5, 'model__max_features': 'sqrt'} | 0.625109                |  
 |                       |                               |                                                                |                        	| 
 
+Decision Tree Classifier - Model 2 performed better with additional parameters like ccp_alpha and max_features.
+
+<ins>Notebook 3</ins>
+
+For this notebook, we compared the training time and accuracy of the following models on the Fitbit Data sets.
+
+- Logistic Regression
+- K Nearest Neighbors (KNN)
+- Support Vector Machines (SVC)
+
+The comparison was done using default parameters for these classifiers and specifying a range of paramaters with Grid Search Cross Validation.
+
+##### Default Parameters Results
+
+| Model Name        	| Train Time (ms)                      | Train Accuracy                | Test Accuracy 	                | 
+|-------------------	|:---------------------------	|:---------------------:	|:----------------------:	|
+| Logistic Regression   | 24                       | 0.664093        | 0.0.630182                 |  
+| KNN                   | 43.6                         | 0.754561        | 0.0.586873                  |  
+| SVM                   | 74                         | 0.673300       | 0.0.613900                 |  
+|                       |                               |                           |                        	| 
+
+KNN had the best training score and Logistic Regression had the best Test Accuracy. Logistic Regression was the fastest model to train.
+
+##### GridSerachCV Parameters Results
+
+Using Grid Search to create models with the different parameters and evaluate the performance metrics
+
+| Model Name        	| Train Time (s)                      | Best Parameters                                          | Best Score 	                | 
+|-------------------	|:---------------------------	|:-------------------------------------------------:	         |:----------------------:	|
+| Logistic Regression   | 7.842295                            | {'model__C': 1.0, 'model__penalty': 'l2', 'model__solver': 'liblinear'}	                     | 0.627077              |  
+| KNN                   | 0.684460                           | {'model__n_neighbors': 17}	                                               | 0.640383                |  
+| SVM   | 324.259399	                           | {'model__C': 1.0, 'model__gamma': 0.5, 'model__kernel': 'rbf'}                                         | 0.656749               |  
+|                       |                               |                                                                |                        	| 
+
+SVM had the best score followed by KNN and SVM took the longest time to train, KNN was the fastest.
 
 
 #### Outline of project
-- [predicting-weight-loss-notebook1-linear-regression](https://github.com/yemifalokun/predicting-weight-loss/blob/main/notebooks/predicting-weight-loss-notebook1-linear-regression.ipynb)
+- [Notebook 1 - predicting-weight-loss-notebook1-linear-regression](https://github.com/yemifalokun/predicting-weight-loss/blob/main/notebooks/predicting-weight-loss-notebook1-linear-regression.ipynb)
 
-- [predicting-weight-loss-notebook2-decision-tree](https://github.com/yemifalokun/predicting-weight-loss/blob/main/notebooks/predicting-weight-loss-notebook2-decision-tree.ipynb)
+- [Notebook 2 - predicting-weight-loss-notebook2-decision-tree-classifier](https://github.com/yemifalokun/predicting-weight-loss/blob/main/notebooks/predicting-weight-loss-notebook2-decision-tree.ipynb)
 
-- [predicting-weight-loss-notebook3-comparing-classifiers](https://github.com/yemifalokun/predicting-weight-loss/blob/main/notebooks/predicting-weight-loss-notebook3-comparing-classifiers.ipynb)
+- [Notebook 3 -predicting-weight-loss-notebook3-comparing-classifiers](https://github.com/yemifalokun/predicting-weight-loss/blob/main/notebooks/predicting-weight-loss-notebook3-comparing-classifiers.ipynb)
 
 ##### Contact and Further Information
