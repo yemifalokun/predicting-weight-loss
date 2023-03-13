@@ -65,6 +65,8 @@ Results from the models are described below:
 
 This notebook creates a ML Application using Linear Regression to understand the relationship between the features in this dataset where `Calories` is the dependent feature. Training and Test data sets were created using a 70/30 split
 
+##### <ins> Model and Model1 Linear Regression Results </ins>
+
 Two models (ML Applications) were created:
 - `Model` - created using features - TotalSteps,TotalDistance,TrackerDistance,VeryActiveMinutes,FairlyActiveMinutes,LightlyActiveMinutes,SedentaryMinutes and Calories as the dependent feature/outcome variable
 - `Model1` - created using features TotalSteps and TotalDistance and Calories as the dependent feature/outcome variable
@@ -93,6 +95,29 @@ For each model applications (model and model1), we ran some tests using sample F
 Predicted results from this model does not look realistic for the 30k test, you would expect that the more steps and distance that you walk should result in higher calories, but the inverse is the case looking at the test results above. The 30k prediction may be due to the dataset used to train the model as there was a limited amount of datasets where the number of steps taken was over 25,000.
 
 
+##### <ins> Linear Regression Cross Validation/Ensemble Results </ins>
+
+Using cross validation on Linear Regression did not provide results/metrics better than the two models above and the Predicted results from testing the model did not look realistic because the more Steps and Total Distance recorded did not result in losing more calories. Accuracy improved to 58%.
+
+Using an Ensemble of Multiple Regressors with scaling, the following results was produced:
+
+
+| Model Name        	| Train Accuracy                | Test Accuracy 	    | 
+|-------------------	|:---------------------:	|:----------------------:	|
+| TransformedTargetRegressor   | 0.623067       | 0.540718	               |  
+| KNeighborsRegressor   | 0.748556       | 0.568831		               |  
+| DecisionTreeRegressor   | 1.000000       | 0.367901	               |  
+| Ridge   | 0.546841       | 0.372198	               |  
+| SVR   | 0.009347	       | 0.029354	               |  
+| GradientBoostingRegressor   | 0.863578      | 0.619303	               |  
+| RandomForestRegressor   | 0.956034      | 0.674712	               |  
+| TransformedTargetRegressor   | 0.623067       | 0.540718	               |  
+|                       |                               |                           |                        	| 
+
+Looking at the training and test accuracy, even though DecisionTreeRegressor had a score of 100%, the test accuracy is 37% which means this model can accurately predict the class of 37% of the test data. This will will affect the performance of the model in the real world.
+
+For model recommendation in this ensemble, it will either GradientBoostingRegressor or RandomForestRegressor with over 85% in training score and over 60% in test scores.
+
 <ins>Notebook 2</ins>
 
 This notebook created some ML applications using the Decision Tree Classifier. For these models, the daily calories records by the user was used to create a `weightloss` feature which was set to `1 = Yes` or `0 = No`.
@@ -100,6 +125,8 @@ This notebook created some ML applications using the Decision Tree Classifier. F
 - No: if the previous calorie recorded was less than the next day
 
 ![Sample Dataframe of Decision Tree Classifier Dataset!](./images/Sample-Dataframe-DCT.jpeg)
+
+##### <ins> Decision Tree Classifier Model Results </ins>
 
 Using this dataset, setting the max_depth = 5 and using a Standard Scaler, the model provided the following results:
 
@@ -129,6 +156,32 @@ Using Grid Search to create models with the different parameters and evaluate th
 
 Decision Tree Classifier - Model 2 performed better with additional parameters like ccp_alpha and max_features.
 
+Using a DTC model with TotalSteps and TotalDistance as features and weightloss as the target, we visualize the DTC using Graphviz, a popular tool for visualizing data structures. Max Depth was set to 5  
+
+![Graphviz Visualization of Decision Tree Classifier!](./images/fitbit_user_weight_loss_graph_diagram.png)
+
+##### <ins> Decision Tree Classifier Grid Search Results </ins>
+
+With a 63% accuracy at Max Depth between 3 and 5, let's see if we can get a higher accuracy by running Max Depth from a range of 1 to 10 and using `gini` and `entropy` criterion which determines how the impurity of a split will be measured. Following results were observed:
+- For random splitter, highest accuracy was observed with entropy and gini at max depth of 7
+- For best splitter, highest accuracy for mini was observed at max depth of 6 for mini while highest accuracy was observed at max depth 4 for entropy Criterion
+
+##### <ins> Decision Tree Classifier Comparing Classifier Results </ins>
+
+Comparing Grid Searches using the following Cross Validation techniques (i.e., GridSearchCV,RandomizedSearchCV, HalvingGridSearchCV and HalvingRandomSearchCV) with grid search parameters produced the following results:
+
+| CV Method      	| Criterion                  | Training Accuracy                | Test Accuracy 	                | Max Depth                | Best Score	               
+|-------------------	|:---------------------------	|:---------------------:	|:----------------------:	|:---------------------:	|:----------------------: |
+| GridSearchCV   | gini               | 0.623549        | 0.633205	|   2  |  0.612039	 
+| RandomizedSearchCV   | entropy               | 0.623549        | 0.633205	|   2  |  0.612039	 
+| HalvingGridSearchCV   | entropy               | 0.623549        | 0.633205	|   2  |  0.607927	
+| HalvingRandomSearchCV   | entropy               | 0.623549     | 0.633205	|   2  |  0.626514		
+|                |                    |                 |            |       |       
+
+Running GridSearch with the three CV Method produced similar results, HalvingGridSearchCV with entropy criterion produced a slightly higher Training accuracy but lower test accuracy. Max Depth was set to 2 for the best results.
+
+
+
 <ins>Notebook 3</ins>
 
 For this notebook, we compared the training time and accuracy of the following models on the Fitbit Data sets.
@@ -139,18 +192,18 @@ For this notebook, we compared the training time and accuracy of the following m
 
 The comparison was done using default parameters for these classifiers and specifying a range of paramaters with Grid Search Cross Validation.
 
-##### Default Parameters Results
+##### <ins> Default Parameters Results </ins>
 
 | Model Name        	| Train Time (ms)                      | Train Accuracy                | Test Accuracy 	                | 
 |-------------------	|:---------------------------	|:---------------------:	|:----------------------:	|
-| Logistic Regression   | 24                       | 0.664093        | 0.0.630182                 |  
-| KNN                   | 43.6                         | 0.754561        | 0.0.586873                  |  
-| SVM                   | 74                         | 0.673300       | 0.0.613900                 |  
+| Logistic Regression   | 24                       | 0.664093        | 0.630182                 |  
+| KNN                   | 43.6                         | 0.754561        | 0.586873                  |  
+| SVM                   | 74                         | 0.673300       | 0.613900                 |  
 |                       |                               |                           |                        	| 
 
 KNN had the best training score and Logistic Regression had the best Test Accuracy. Logistic Regression was the fastest model to train.
 
-##### GridSerachCV Parameters Results
+##### <ins> GridSerachCV Parameters Results </ins>
 
 Using Grid Search to create models with the different parameters and evaluate the performance metrics
 
@@ -163,6 +216,11 @@ Using Grid Search to create models with the different parameters and evaluate th
 
 SVM had the best score followed by KNN and SVM took the longest time to train, KNN was the fastest.
 
+##### <ins> Aggregations of Models Results </ins>
+
+With the three models above producing a best score of 62% to 65%, we are going to explore an ensemble to make predictions to see if we can improve the accuracy score. The ensemble will use the same three models above of Logistic Regression, KNN, and Support Vector Machines.
+
+With the aggregation of models, the average accuracy score of 63%+. Adding weights to the VotingClassifier produced the lowest accuracy score of 63.5%
 
 #### Outline of project
 - [Notebook 1 - predicting-weight-loss-notebook1-linear-regression](https://github.com/yemifalokun/predicting-weight-loss/blob/main/notebooks/predicting-weight-loss-notebook1-linear-regression.ipynb)
@@ -171,4 +229,35 @@ SVM had the best score followed by KNN and SVM took the longest time to train, K
 
 - [Notebook 3 -predicting-weight-loss-notebook3-comparing-classifiers](https://github.com/yemifalokun/predicting-weight-loss/blob/main/notebooks/predicting-weight-loss-notebook3-comparing-classifiers.ipynb)
 
-##### Contact and Further Information
+
+#### Next Steps & Recommendations </br>
+
+Three notebooks are included in this project which demonstrates that a number of Machine Learning (ML) models can be used to predict the number of calories loss and whether a person can lose weight. The models used data from 31 Fitbit users over a period of a month. The model prediction provided training accuracy of 65% to 100% depending on the ML algorithms.
+
+This means that the ML application can be used to predict weight loss and number of calories lost with an accuracy of 65% to 100%. Some of the ML applications with 100% training accuracy did not perform well with the test data. For recommendation,  there are different ML Applications that could be considered:
+- For linear regression, recommendation would be to use either GradientBoostingRegressor or RandomForestRegressor ML applications with over 85% in training score and over 60% in test scores
+- For Decision Tree Classification, use the DTC classifier at Max Depth 2 with `gini` criterion which shows over 62% training and test scores
+- With classifiers compared in this project,  K-Nearest Neighbor (KNN) with training score of 75% and test score of 59% would be the recommendation
+
+The summary recommendation would be to use an ML application with GradientBoostingRegressor algorithm with a  training score of 86% and testing score of 61%. This provides room for training with more data especially data with users with steps over 30k steps and distances over 5 miles.
+
+For Next steps based on the room to improve the models, I would recommend collecting more data where users record the following:
+- Daily water consumption
+- Calories intake (i.e., Protein, Carbs etc.)
+- User demographics (i.e., Age, Gender, Weight etc.)
+
+This would be used to train the model to provide better predictions for users based on some features listed above.
+
+This ML model would be deployed as an AI application and Weight loss application can use the model for users to determine what they need to do to lose weight or estimate the amount of Calories loss based on those features. 
+
+<br> 
+
+#### Contact and Further Information 
+
+<br> 
+`Author` - Yemi Falokun <br>
+`Email` - yemifalokun@hotmail.com 
+
+## License
+
+Open source projects are made available and contributed to under licenses that include terms that, for the protection of contributors, make clear that the projects are offered “as-is”, without warranty, and disclaiming liability for damages resulting from using the projects.
