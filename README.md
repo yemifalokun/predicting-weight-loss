@@ -15,7 +15,7 @@ This technology has the potential to revolutionize the way we think about weight
 #### TL;DR
 This project provides information on ML/AI applications that were used to predict calories loss/weight loss. A summary presentation report is provided below:
 
-- [Capstone Project - Report and Presentation - Predicting Weight Loss](https://github.com/yemifalokun/predicting-weight-loss/blob/main/presentations/Capstone-Project-Report-and-Presentation.pdf)
+- [Capstone Project - Report and Presentation - Predicting Weight Loss](https://github.com/yemifalokun/predicting-weight-loss/blob/main/presentation/Capstone-Project-Report-and-Presentation.pdf)
 
 #### Rationale
 Weight loss is a difficult and often frustrating process, but it can be life-changing. Here are just a few reasons why anyone should care about weight loss:
