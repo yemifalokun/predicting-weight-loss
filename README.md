@@ -12,6 +12,11 @@ Machine learning (ML) is a branch of artificial intelligence (AI) that enables c
 
 This technology has the potential to revolutionize the way we think about weight loss. Instead of relying on traditional methods like dieting and exercise, we may be able to use machine learning to create personalized weight loss plans that are more likely to be successful.
 
+### TL;DR
+This project provides information on ML/AI applications that were used to predict calories loss/weight loss. A summary presentation report is provided below:
+![Capstone Project - Report and Presentation - Predicting Weight Loss!](./presentation/Capstone Project - Report and Presentation - Yemi Falokun.pdf)
+
+
 #### Rationale
 Weight loss is a difficult and often frustrating process, but it can be life-changing. Here are just a few reasons why anyone should care about weight loss:
 
@@ -255,7 +260,9 @@ This ML model would be deployed as an AI application and Weight loss application
 #### Contact and Further Information 
 
 <br> 
-`Author` - Yemi Falokun <br>
+
+`Author` - Yemi Falokun 
+
 `Email` - yemifalokun@hotmail.com 
 
 ## License
