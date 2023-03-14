@@ -8,7 +8,7 @@ Yemi Falokun
 
 #### Executive summary
 
-Machine learning (ML) is a branch of artificial intelligence (AI) that enables computers to “self-learn” from training data and improve over time, without being explicitly programmed. This can be used to predict weight loss, as people who lose weight tend to have certain patterns in their behavior. For example, they may eat less, exercise more, or change their diet. By analyzing data from people who have lost weight, machine learning algorithms can identify these patterns and use them to predict whether or not someone will be successful in their weight loss efforts.
+Machine learning (ML) is a branch of Artificial Antelligence (AI) that enables computers to “self-learn” from training data and improve over time, without being explicitly programmed. This can be used to predict weight loss, as people who lose weight tend to have certain patterns in their behavior. For example, they may eat less, exercise more, or change their diet. By analyzing data from people who have lost weight, machine learning algorithms can identify these patterns and use them to predict whether or not someone will be successful in their weight loss efforts.
 
 This technology has the potential to revolutionize the way we think about weight loss. Instead of relying on traditional methods like dieting and exercise, we may be able to use machine learning to create personalized weight loss plans that are more likely to be successful.
 
@@ -124,12 +124,12 @@ This algorithm can predict weight loss with an accuracy of over 60%+
 
 Three notebooks are included in this project which demonstrates that a number of Machine Learning (ML) models can be used to predict the number of calories loss and whether a person can lose weight.
 
-The models used data from 33 Fitbit users over a period of a month. The model prediction provided training accuracy of 65% to 100% depending on the ML algorithms. Predict weight loss and number of calories lost with an accuracy of 65% to 100%.
+The models used data from 33 Fitbit users over a period of a month. The model prediction provided training accuracy of 65% to 100% depending on the ML algorithms. Predict weight loss and number of calories lost with an accuracy of 65% to 100%. These ML algorithms will be deployed to create the AI applications with endpoints that users can call with input variables (i.e., number of steps, total distance etc.) and the applications will return number of predicted calories loss or a weight loss flag.
 
 Each notebook includes a Findings section for the models, but a summary is as follows:
-- For ML application 1, we tried a number of models with all the variables and a couple of strong inputs (i.e., Total Steps and Total Distance) . The model provided an accuracy score of 62% to 100% for training and 37% to 67% for test. Important Variables were Total Steps and Total Distance
-- For ML application 2, the models produced an average accuracy score is in the 60% range
-- For ML application 3, the K-Nearest Neighbor (KNN) had the best training score of 75% and test score of 58%
+- For AI application 1, we tried a number of models with all the variables and a couple of strong inputs (i.e., Total Steps and Total Distance) . The model provided an accuracy score of 62% to 100% for training and 37% to 67% for test. Important Variables were Total Steps and Total Distance
+- For AI application 2, the models produced an average accuracy score is in the 60% range
+- For AI application 3, the K-Nearest Neighbor (KNN) had the best training score of 75% and test score of 58%
 
 
 #### Outline of project
@@ -142,7 +142,7 @@ Each notebook includes a Findings section for the models, but a summary is as fo
 
 #### Next Steps & Recommendations </br>
 
-The recommendation would be to use an ML application with GradientBoostingRegressor algorithm with a  training score of 86% and testing score of 61%. This provides room for training with more data especially data with users with steps over 30k steps and distances over 5 miles.
+The recommendation would be to use an AI application with GradientBoostingRegressor algorithm (i.e., AI Application 1) with a training score of 86% and testing score of 61%. This provides room for training with more data especially data with users with steps over 30k steps and distances over 5 miles.
 
 For Next steps based on the room to improve the models, I would recommend collecting more data where users record the following:
 - Daily water consumption
