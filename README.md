@@ -70,11 +70,11 @@ The chart shows that largest amount of Calories lost recorded by users at 2,000,
 Three ML Applications were created, links to the corresponding notebooks are in [Outline of project](#Outline-of-project). These Applications provided the following results
 
 
-##### <ins> AI Application 1 - Linear Regression (LR) </ins>
+##### <ins> AI Application 1 - ML Regressors </ins>
 
-LR is a way to estimate the relationship between two variables. This can make predictions about future values of the variables (i.e., Calories loss)
+Regressors are a type of ML algorithms that can be used to predict a continuos value. The do this by learning from data (i.e., number of steps taken, total distance etc.) and then using that data to create a model that can make predictions about new data (i.e., number of calories lost)
 
-The application uses variables like Total Distance and No of Steps taken
+The application uses variables like Total Distance and No of Steps taken to predict number of calories that a user could lose.
 
 `Algorithm`: GradientBoostingRegressor
 
@@ -149,9 +149,9 @@ For Next steps based on the room to improve the models, I would recommend collec
 - Calories intake (i.e., Protein, Carbs etc.)
 - User demographics (i.e., Age, Gender, Weight etc.)
 
-This would be used to train the model to provide better predictions for users based on some features listed above.
+This would be used to train the model to provide better predictions for users based on some of the features listed above (i.e., daily water consumption etc.)
 
-This ML model would be deployed as an AI application and Weight loss application can use the model for users to determine what they need to do to lose weight or estimate the amount of Calories loss based on those features. 
+This ML model would be deployed as an AI application and Weight loss applications can use the model for users to determine what they need to do to lose weight or estimate the amount of Calories loss based on the variables used to build the model. 
 
 <br> 
 
