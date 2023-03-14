@@ -69,6 +69,16 @@ The chart shows that largest amount of Calories lost recorded by users at 2,000,
 
 Three ML Applications were created, links to the corresponding notebooks are in [Outline of project](#Outline-of-project). These Applications provided the following results
 
+###### <ins> Training Score Definition </ins>
+
+- Training score is a measure of how well a model performs on the training data. The training score is calculated by taking the accuracy of the model on the training data. Accuracy is the percentage of predictions that are correct.
+- High training score indicates that the model is learning well and is likely to perform well on the test data. A low training score indicates that the model is not learning well and is likely to perform poorly on the test data.
+
+###### <ins> Test Score Definition </ins>
+
+- Test score is a measure of how well a model performs on data that it has not seen before. It is important to test a model on new data to see how well it will generalize to new situations. 
+- High test score indicates that the model is likely to perform well on new data, while a low test score indicates that the model may not perform as well.
+
 
 ##### <ins> AI Application 1 - ML Regressors </ins>
 
@@ -81,7 +91,7 @@ The application uses variables like Total Distance and No of Steps taken to pred
 |        	|                    | 
 |-------------------	|:---------------------------	|
 | Training Score    | 85%                     |  
-| Training RMSE         | 61%                       |  
+| Test Score         | 61%                       |  
 |                       |                               |
 
 This algorithm can predict calories loss with an accuracy of over 60%+
@@ -97,7 +107,7 @@ The tree is then used to classify new data like weight loss flag
 |        	|                    | 
 |-------------------	|:---------------------------	|
 | Training Score    | 62%                     |  
-| Training RMSE         | 63%                       |  
+| Test Score        | 63%                       |  
 |                       |                               |
 
 This algorithm can predict weight loss with an accuracy of over 60%+
@@ -113,7 +123,7 @@ The goal of classification is to identify patterns (i.e., no of steps taken etc.
 |        	|                    | 
 |-------------------	|:---------------------------	|
 | Training Score    | 75%                     |  
-| Training RMSE         | 59%                       |  
+| Test Score        | 59%                       |  
 |                       |                               |
 
 This algorithm can predict weight loss with an accuracy of over 60%+
