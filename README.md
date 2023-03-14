@@ -130,7 +130,7 @@ This algorithm can predict weight loss with an accuracy of over 60%+
 
 ### `Recommendation` - Use GradientBoostingRegressor algorithm with a  training score of 86% and testing score of 61%
 
-> **_NOTE:_** Gradient Boosting Regressor is a machine learning algorithm that is used for classification and regression tasks. It is a type of ensemble learning, which means that it combines the predictions of multiple models to get a more accurate prediction. This combination of multiple models may be the reason why we are getting the accuracy percentages above.
+> **_NOTE:_** Gradient Boosting Regressor is a machine learning algorithm that is used for classification and regression tasks. It is a type of ensemble learning, which means that it combines the predictions of multiple models to get a more accurate prediction. This combination of multiple models (aka Ensemble) may be the reason why we are getting the accuracy percentages above.
 <br/>
 
 
